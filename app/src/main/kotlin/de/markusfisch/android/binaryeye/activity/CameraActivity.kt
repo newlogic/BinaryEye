@@ -38,6 +38,7 @@ import de.markusfisch.android.cameraview.widget.CameraView
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+import org.idpass.lite.IDPassReaderActivity
 
 class CameraActivity : AppCompatActivity() {
 	private val zxing = Zxing(ResultPointCallback { point ->
@@ -376,8 +377,11 @@ class CameraActivity : AppCompatActivity() {
 							frameOrientation
 						)?.let { result ->
 							if (result.text != ignoreNext) {
-								postResult(result)
+								val scan = Scan(result)
 								decoding = false
+								val myIntent = Intent(this@CameraActivity, IDPassReaderActivity::class.java)
+								myIntent.putExtra("qrbytes", scan.raw)
+								startActivity(myIntent )
 							}
 						}
 					}

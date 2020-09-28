@@ -78,4 +78,7 @@ dependencies {
 	implementation 'com.google.zxing:core:3.3.3'
 	implementation 'com.github.markusfisch:CameraView:1.9.1'
 	implementation 'com.github.markusfisch:ScalingImageView:1.2.0'
+
+	implementation project(':idpasslite')
+	implementation 'com.google.protobuf:protobuf-java:3.12.2'
 }
